@@ -1,0 +1,46 @@
+.paginationItemStyle {
+    font-size: 15px;
+    border: none;
+
+    .page-link {
+        border: none;
+        color: black;
+    }
+
+    &.page-item {
+        &.active {
+            button {
+                border: none;
+                color: red;
+                background-color: white;
+            }
+        }
+    }
+}
+
+.paginationLinkStyle {
+
+    &:hover {}
+
+    &:active {}
+}
+
+.paginationButton {
+    border: none;
+
+    button {
+        border: none;
+    }
+
+    span {
+        color: black;
+
+    }
+}
+
+.item{
+
+    button {
+        border: none;
+    }
+}
