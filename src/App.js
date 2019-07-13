@@ -1,74 +1,26 @@
 import React, { Component } from 'react';
 import './App.scss';
-import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
+import Container from './Container'
+export default class App extends React.Component {
 
-export default class App extends Component {
 
-  constructor() {
+  constructor(prpos) {
     super();
     this.state = {
-      someNumbersList: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
-      currentPage: 0,
-      startIndex: 0,
-      endIndex: 9,
-      offset: 10
+      name: '이준희',
+      nameList: ['이준희', '송희진', '이태양', '김치현', '안태경', '오영준', '양건우'],
     };
-  }
+  };
 
-  onPageClick = (e) => {
-    e.preventDefault()
-    this.setState({ currentPage: parseInt(e.target.innerText) - 1})
-  }
-
-  pagingPrev = () => {
-    const { startIndex, endIndex, offset } = this.state;
-    if (startIndex == 0) {
-      return;
-    }
+  changeName = () => {
     this.setState({
-      startIndex: startIndex - offset,
-      endIndex: endIndex - offset,
-      currentPage: endIndex - offset
-    })
-  }
-
-  pagingNext = () => {
-    const { startIndex, endIndex, offset } = this.state;
-    if (endIndex > this.state.someNumbersList.length) return;
-    this.setState({
-      startIndex: startIndex + offset,
-      endIndex: endIndex + offset,
-      currentPage: startIndex + offset
-    })
-  }
+      name: this.state.nameList[Math.floor(Math.random() * (6) + 0)],
+    });
+  };
 
   render() {
-
-    const { someNumbersList, currentPage, startIndex, endIndex } = this.state;
     return (
-      <Pagination>
-        <PaginationItem className={'item'}>
-          <PaginationLink onClick={this.pagingPrev} className={'paginationButton'} previous />
-        </PaginationItem>
-
-        {someNumbersList.slice(startIndex, endIndex + 1).map((i, key) => {
-          return (
-            <PaginationItem
-              key={startIndex + i}
-              className={'paginationItemStyle'}
-              active={currentPage == (i)}>
-              <PaginationLink onClick={this.onPageClick} className={'paginationLinkStyle'}>
-                {i + 1}
-              </PaginationLink>
-            </PaginationItem>)
-        }
-        )}
-
-        <PaginationItem className={'item'}>
-          <PaginationLink className={'paginationButton'} next onClick={this.pagingNext} />
-        </PaginationItem>
-
-      </Pagination>
+      <Container defaultName={this.state.name} changeName={this.changeName} />
     );
   }
 }
