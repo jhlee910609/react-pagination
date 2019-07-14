@@ -57,8 +57,13 @@ export default class RadioContainer extends PureComponent {
                         isChecked={selectedType === 100}
                     />
                 </div>
-
-            </div>
+                <div style={{ display: 'flex', flexDirection: 'row', border: '1px solid black', backgroundColor: 'yellow', height:'50px'}}>
+                    <div style={{ flex: 1, backgroundColor: 'red' }}>
+                        <input style={{width: '100%', height: '100%', backgroundColor: 'white', padding: '0px 10px'}}/>
+                        </div>
+                    <div style={{height: '50px', display: 'flex', alignItems: 'center', justifyContent:'center', height: '100%' }}>검색</div>
+                </div>
+            </div >
         )
     }
 }
