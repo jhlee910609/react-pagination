@@ -5,7 +5,7 @@ import styles from './App.scss';
 const Input = ({ name, onChange, value }) => {
     return (
         <div>
-            <input name={name} onChange={onChange} value={value} />
+            <input style={{ border: '1px solid red' }} name={name} onChange={onChange} value={value} />
         </div>
     )
 };
@@ -41,12 +41,13 @@ export default class Container extends PureComponent {
         const newList = this.state.list.map(item => ({
             ...item,
             isChecked: !item.isChecked,
-            name: `이름: ${item.name}`
+            name: item.name,
         })
         );
         this.setState({
             list: newList,
         });
+
     };
 
     addItem = () => {
@@ -79,7 +80,7 @@ export default class Container extends PureComponent {
         const { addItem, handleChange } = this;
         const { name } = this.state;
         return (
-            <div className={styles.box}>
+            <div style={{ marginTop: '100px' }}>
                 <span>
                     <Input name='name' onChange={handleChange} value={name} />
                 </span>

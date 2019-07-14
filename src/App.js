@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import './App.scss';
-import Container from './Container'
-export default class App extends React.Component {
+import Container from './Container';
+import BaseComponent from './BaseComponent';
+import RadioContainer from './RadioContainer';
+
+export default class App extends BaseComponent {
 
 
   constructor(prpos) {
@@ -12,6 +15,8 @@ export default class App extends React.Component {
     };
   };
 
+
+
   changeName = () => {
     this.setState({
       name: this.state.nameList[Math.floor(Math.random() * (6) + 0)],
@@ -20,7 +25,21 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <Container defaultName={this.state.name} changeName={this.changeName} />
+      <div cl>
+        <div style={{ height: '100px', width: '100%', backgroundColor: 'yellow', fontSize: '2rem', textAlign: 'center', position: 'fixed', top: '0', overflow: 'hidden' }}>메뉴바</div>
+        <div style={{ marinTop: '100px', display: 'flex', flexDirection: 'column' }} >
+          <Container defaultName={this.state.name} changeName={this.changeName} />
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <div style={{ width: '61px', height: '27px', borderRadius: '2px', border: 'solid 1px #a9afb3', padding: '5px', fontSize: '12px', boxSizing: 'boder-box' }}>
+              10개 보기
+            </div>
+            <div style={{ marginTop: '50px', width: '61px', height: '27px', borderRadius: '2px', border: 'solid 1px #a9afb3', padding: '5px', fontSize: '12px' }}>
+              10개 보기
+            </div>
+          </div>
+        </div>
+        <RadioContainer />
+      </div>
     );
   }
 }
