@@ -1,11 +1,15 @@
+$height: 40px;
+$border-width: 1px;
+
 .item-container {
+    box-sizing: border-box;
     display: flex;
-    height: 30px;
-    width: 100px;
     border-radius: 2px;
     border: solid 1px #a9afb3;
     margin-right: 5px;
-    line-height: 28px;
+    width: 100px;
+    height: $height;
+    line-height: $height - ($border-width *2);
     text-align: center;
 
     &:nth-last-child(1) {
